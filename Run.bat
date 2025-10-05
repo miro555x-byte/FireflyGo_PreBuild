@@ -1,77 +1,86 @@
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
 
-set "GAME_EXE=StarRail.exe"
-set "GAME_ALIASES=StarRail.exe StarRail.exe StarRail GameClient.exe"
+REM ====== CONFIG ======
+set "GAME_NAMES=StarRail.exe GameClient.exe"
+set "HELPERS=firefly-go_win.exe FireflyProxy.exe launcher.exe"
 
+REM ====== STOP OLD HELPERS ======
 echo ===============================
-echo Killing old processes...
+echo Killing old helper processes...
 echo ===============================
-taskkill /IM "firefly-go_win.exe" /F >nul 2>&1
-taskkill /IM "FireflyProxy.exe" /F >nul 2>&1
-taskkill /IM "launcher.exe" /F >nul 2>&1
+for %%P in (%HELPERS%) do (
+    taskkill /IM "%%~P" /T /F >nul 2>&1
+)
 
+REM ====== START SERVER ======
 echo ===============================
 echo Starting Server...
 echo ===============================
-cd /d "%~dp0PS 3.6.5X"
+cd /d "%~dp0FireflyGo 3.6.5X"
 if exist "firefly-go_win.exe" (
-    start "" "%~dp0PS 3.6.5X\firefly-go_win.exe"
+    start "" "%CD%\firefly-go_win.exe"
 ) else (
-    echo Not found firefly-go_win.exe --> "%~dp0PS 3.6.5X"
+    echo Not found firefly-go_win.exe --> "%~dp0FireflyGo 3.6.5X"
     pause & exit /b 1
 )
 
+REM ====== START PROXY ======
 echo ===============================
 echo Starting Proxy...
 echo ===============================
-cd /d "%~dp0PS 3.6.5X\FireflyProxy"
+cd /d "%~dp0FireflyGo 3.6.5X\FireflyProxy"
 timeout /t 3 /nobreak >nul
-start "" "FireflyProxy.exe"
+start "" "%CD%\FireflyProxy.exe"
 
 timeout /t 3 /nobreak >nul
 
+REM ====== START LAUNCHER ======
 echo ===============================
 echo Starting Launcher...
 echo ===============================
 cd /d "%~dp0"
-start "" "launcher.exe"
+start "" "%CD%\launcher.exe"
 
+REM ====== WAIT GAME START ======
 echo ===============================
-echo Waiting for %GAME_EXE% to start...
+echo Waiting for game to start...
 echo ===============================
-
-:wait_start
+:WAIT_START
 set "FOUND="
-for %%N in (%GAME_ALIASES%) do (
-    tasklist /FI "IMAGENAME eq %%~N" 2>nul | find /I "%%~N" >nul && set "FOUND=1"
+for %%N in (%GAME_NAMES%) do (
+    for /f "tokens=2 delims=," %%A in ('tasklist /FI "IMAGENAME eq %%~N" /FO CSV /NH ^| find /I "%%~N"') do (
+        set "FOUND=1"
+    )
 )
 if not defined FOUND (
     timeout /t 2 >nul
-    goto :wait_start
+    goto :WAIT_START
 )
-echo Detected game process running.
+echo Detected game process.
 
+REM ====== MONITOR UNTIL GAME CLOSES ======
 echo ===============================
 echo Monitoring until the game closes...
 echo ===============================
-
-:wait_exit
+:WAIT_EXIT
 set "FOUND="
-for %%N in (%GAME_ALIASES%) do (
-    tasklist /FI "IMAGENAME eq %%~N" 2>nul | find /I "%%~N" >nul && set "FOUND=1"
+for %%N in (%GAME_NAMES%) do (
+    for /f "tokens=2 delims=," %%A in ('tasklist /FI "IMAGENAME eq %%~N" /FO CSV /NH ^| find /I "%%~N"') do (
+        set "FOUND=1"
+    )
 )
 if defined FOUND (
     timeout /t 5 >nul
-    goto :wait_exit
+    goto :WAIT_EXIT
 )
 
+REM ====== SHUTDOWN HELPERS ======
 echo ===============================
 echo Game closed - shutting down helpers...
 echo ===============================
-
-taskkill /IM "FireflyProxy.exe" /F >nul 2>&1
-taskkill /IM "launcher.exe" /F >nul 2>&1
-taskkill /IM "firefly-go_win.exe" /F >nul 2>&1
+for %%P in (%HELPERS%) do (
+    taskkill /IM "%%~P" /T /F >nul 2>&1
+)
 
 exit /b 0
