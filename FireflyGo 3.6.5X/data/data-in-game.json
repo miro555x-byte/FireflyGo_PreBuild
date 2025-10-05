@@ -1,0 +1,194 @@
+{
+  "leader": 0,
+  "lineups": {
+    "0": 1413,
+    "1": 1415,
+    "2": 1409,
+    "3": 1407
+  },
+  "position": {
+    "x": -4030,
+    "z": -13006,
+    "y": 0,
+    "rot_y": 270000
+  },
+  "scene": {
+    "plane_id": 10000,
+    "floor_id": 10000000,
+    "entry_id": 100000104
+  },
+  "player_outfit": [
+    1001
+  ],
+  "char_path": {
+    "main": 8008,
+    "march_7": 1224
+  },
+  "char_enhanced": {
+    "1005": 1,
+    "1006": 1,
+    "1205": 1,
+    "1212": 1
+  },
+  "challenge": {
+    "challenge_id": 4712,
+    "skip_half": 0,
+    "blessings": [],
+    "is_in_challenge": true,
+    "current_stage_id": 30118121,
+    "path_resonance_id": 0,
+    "maze_buff": 3030141,
+    "first_lineup": [
+      8001,
+      1403,
+      1415,
+      1409
+    ],
+    "second_lineup": [
+      1412,
+      1405,
+      1307,
+      1204
+    ]
+  },
+  "challenge_peak": {
+    "current_mode": "Knight",
+    "group_id": 2,
+    "is_in_challenge_peak": false,
+    "challenge_peak_data": {
+      "1": {
+        "checkmate_data": {
+          "challenge_id": 104,
+          "blessing": 3033006,
+          "lineup": [
+            1413,
+            1409,
+            1407,
+            1403
+          ],
+          "stage_id": 30501022,
+          "is_hard_mode": true
+        },
+        "knight_data": {
+          "current_challenge_id": 103,
+          "details_data": [
+            {
+              "lineup": [
+                1222,
+                1225,
+                1310,
+                1303
+              ],
+              "stage_id": 30501011,
+              "challenge_id": 101
+            },
+            {
+              "lineup": [
+                1412,
+                1414,
+                1408,
+                1313
+              ],
+              "stage_id": 30501012,
+              "challenge_id": 102
+            },
+            {
+              "lineup": [
+                1407,
+                1403,
+                1409,
+                1413
+              ],
+              "stage_id": 30501013,
+              "challenge_id": 103
+            }
+          ]
+        }
+      },
+      "2": {
+        "checkmate_data": {
+          "challenge_id": 204,
+          "blessing": 3033021,
+          "lineup": [
+            1415,
+            1413,
+            1409,
+            1407
+          ],
+          "stage_id": 30502022,
+          "is_hard_mode": true
+        },
+        "knight_data": {
+          "current_challenge_id": 203,
+          "details_data": [
+            {
+              "lineup": [
+                1302,
+                1309,
+                1410
+              ],
+              "stage_id": 30502011,
+              "challenge_id": 201
+            },
+            {
+              "lineup": [
+                1221,
+                1222
+              ],
+              "stage_id": 30502012,
+              "challenge_id": 202
+            },
+            {
+              "lineup": [
+                1415,
+                8001,
+                1414,
+                1313
+              ],
+              "stage_id": 30502013,
+              "challenge_id": 203
+            }
+          ]
+        }
+      }
+    }
+  },
+  "theory_craft": {
+    "hp": {
+      "1": [
+        200000,
+        1000000,
+        200000
+      ],
+      "2": [
+        2000000000,
+        2000000000,
+        2000000000
+      ]
+    },
+    "cycle_count": 1,
+    "mode": false
+  },
+  "profile_data": {
+    "cur_chat_bubble_id": 220008,
+    "cur_phone_theme_id": 221012,
+    "cur_phone_case_id": 254001,
+    "cur_pam_skin_id": 252000,
+    "cur_pet_id": 1003,
+    "cur_avatar_player_icon": 202034,
+    "cur_player_personal_card": 253001,
+    "cur_signature": "Firefly GO By Kain",
+    "cur_display_avatar": [
+      1310,
+      1309,
+      1407,
+      1413,
+      1412
+    ],
+    "cur_is_display_avatar": true
+  },
+  "skin_data": {
+    "1001": 1100101,
+    "1310": 1131001
+  }
+}
